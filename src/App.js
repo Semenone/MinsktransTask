@@ -1,10 +1,8 @@
 import './App.css';
 import Service from './service';
 import React, { Component } from 'react';
-import {Map, InfoWindow, Marker, GoogleApiWrapper, google, maps} from 'google-maps-react';
+import {GoogleApiWrapper} from 'google-maps-react';
 import MapComponent from "./MapComponent";
-
-
 
 const service = new Service();
 
@@ -15,7 +13,6 @@ class App extends Component{
     routes: [],
     mainRouteStops: []
   }
-
 
   componentDidMount() {
     service.getStops()
@@ -30,29 +27,27 @@ class App extends Component{
   }
 
   render(){
-//    const stops = this.state.stops
     const routes = this.state.routes;
     const stops = this.state.stops;
-    // console.log(routes)
 
     return(
         <div>
-        <MapComponent mainRouteStops={this.state.mainRouteStops} stops={stops}/>
-          <p style={{ position: 'fixed',
-            float:'left',
-            height: '100%',
-            width: '50%',
-            overflow: 'scroll' }}
-          >{
-            routes.map(e => {
-              return (
-                  <div onClick= { () => {
-                      this.setState({mainRouteStops: e.routeStops})
-                  }}>
-                    {e.routeNum} - {e.routeName}
+
+           <MapComponent mainRouteStops={this.state.mainRouteStops} stops={stops}/>
+
+            <div style={{position: 'fixed'}} className="list-item">
+              {
+                routes.map((item) => {
+                  return (
+                  <div style={{margin: '5px'}} onClick= { () => {
+                    this.setState({mainRouteStops: item.routeStops})
+                }}>
+                    <p className="stop-item">{item.routeNum} - {item.routeName}</p>
                   </div>)
-            })
-          }</p>
+                })
+              }
+
+            </div>
         </div>
     )
   }

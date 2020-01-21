@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.list-item {
+  position: fixed;
+  float:left;
+  height: 100%;
+  width: 50%;
+  overflow: auto;
+  cursor: pointer;
+}
+
+.stop-item {
+  margin: 5px 0;
+  border: 1px solid black;
+}

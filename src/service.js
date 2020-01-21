@@ -19,7 +19,7 @@ export default class MinskServise {
                 stopsRawData =  response.match(stopDataRe);
                 for (let i = 0; i <= stopsRawData.length;i++){
                     if ((typeof stopsRawData[i]) == 'string'){
-                        temp = stopsRawData[i].replace(/;0;0;/, ';').replace(/;;/, ';').split(";");
+                        temp = stopsRawData[i].replace(/;0;0;/, '; ').replace(/;;/, ';').split(";");
                         if (temp[2] !== ''){
                             tempName = temp[2];
                         };
